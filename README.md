@@ -32,7 +32,7 @@ In my instance my `PUID=1000` and `PGID=1000` you can find yours by using the `i
 
 After the docker container is created you can start it using the command
 
-    docker start -a steamcmd
+    docker start -ai steamcmd
 
 To download most game servers, you can login anonymously. After you started the container
 
