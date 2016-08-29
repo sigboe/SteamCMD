@@ -4,6 +4,7 @@ This Dockerfile will build an image for SteanCMD containerized. It follows best 
 
 ## Instancing the container
     docker run \
+        -it
         --name steamcmd \
         -e PUID=<UID> -e PGID=<GID> \
         -v </path/to/steamapps>:/steamapps \
@@ -11,6 +12,7 @@ This Dockerfile will build an image for SteanCMD containerized. It follows best 
 
 ### Parameters
 
+* `-i` Interactive mode for terminal, `-t` I think this one mainly makes things look proper.
 * `--name steamcmd` -This is a useful name, you may pick another. If you don't pick a name a random name will be generated. 
 * `-e PGID` for for GroupID - see below for explanation
 * `-e PUID` for for UserID - see below for explanation
@@ -28,6 +30,10 @@ In my instance my `PUID=1000` and `PGID=1000` you can find yours by using the `i
 
 ## Usage **IMPORTANT**
 
+After the docker container is created you can start it using the command
+
+    docker start -a steamcmd
+
 To download most game servers, you can login anonymously. After you started the container
 
     login anonymous
@@ -42,8 +48,18 @@ Every time you download a game you have to set install directory. This again is 
 
 This will make a folder inside the directory which is mounted externally (if you followed the instructions above) for every game. You can then run them in another Docker container or in wine or how you like. It is not good practice to run it inside the same Docker container as SteamCMD because then you would have to save your password in plain text and turn off two factor authentication.
 
-## Game/server installation
+### Game/server installation
 
 Please see the official instructions here.
 
 https://developer.valvesoftware.com/wiki/SteamCMD#Downloading_an_app
+
+## Build from Dockerfile
+
+First you of all you need to have Docker installed. [Assuming linux see here](https://docs.docker.com/engine/installation/linux/). Also you should have git installed (see how to install programs for your distrobution)
+
+    git clone https://github.com/sigboe/SteamCMD.git
+    cd SteamCMD
+    docker build -t steamcmd .
+
+You either need to run the `docker` command as root, or need to be in the docker group.
