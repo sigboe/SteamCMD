@@ -1,6 +1,6 @@
 # SteamCMD
 
-This Dockerfile will build an image for SteanCMD containerized. It follows best practice from Valve. Full documentation of how to use the program can be found [here](https://developer.valvesoftware.com/wiki/SteamCMD).
+This Dockerfile will build an image for SteamCMD containerized. It follows best practice from Valve. Full documentation of how to use the program can be found [here](https://developer.valvesoftware.com/wiki/SteamCMD).
 
 ## Instancing the container
     docker run \
@@ -8,7 +8,7 @@ This Dockerfile will build an image for SteanCMD containerized. It follows best 
         --name steamcmd \
         -e PUID=<UID> -e PGID=<GID> \
         -v </path/to/steamapps>:/steamapps \
-        steamcmd
+        sigboe/steamcmd
 
 ### Parameters
 
@@ -17,7 +17,7 @@ This Dockerfile will build an image for SteanCMD containerized. It follows best 
 * `-e PGID` for for GroupID - see below for explanation
 * `-e PUID` for for UserID - see below for explanation
 * `-v /steamapps` -You want to mount the installation directory of your games you can use, example using another docker container running wine, or something else.
-* `steamcmd` -As of initial commit the image is not on docker hub yet, you will need to build it first. See below for instructions.
+
 
 ### User / Group identifiers
 
@@ -38,7 +38,7 @@ To download most game servers, you can login anonymously. After you started the 
 
     login anonymous
 
-Or you may have to log in with your username, substitute anonymous with your user name, you will be prompted to enter your password and if applicable two factor authentication key. **IMPORTANT** the password will be visible on screen while typing. This is sadly just how SteamCMD was made.
+Or you may have to log in with your username, substitute anonymous with your user name, you will be prompted to enter your password and if applicable two factor authentication key. **IMPORTANT** the password will be visible on screen while typing. This is sadly just how SteamCMD was made. Subsequent logins when you start the container will not require two factor authentication, but it is required if you create a new container from the image.
 
 ### **IMPORTANT** game/server install directory
 
@@ -56,10 +56,10 @@ https://developer.valvesoftware.com/wiki/SteamCMD#Downloading_an_app
 
 ## Build from Dockerfile
 
-First you of all you need to have Docker installed. [Assuming linux see here](https://docs.docker.com/engine/installation/linux/). Also you should have git installed (see how to install programs for your distrobution)
+You don't need to build the Dockerfile. If you follow the instructions above, it will download it from the repository, if you want to build from Dockerfile you can follow the basic instructions below.
 
-    git clone https://github.com/sigboe/SteamCMD.git
-    cd SteamCMD
-    docker build -t steamcmd .
+First you of all you need to have Docker installed. [Assuming linux see here](https://docs.docker.com/engine/installation/linux/). 
+
+    docker build -t steamcmd https://github.com/sigboe/SteamCMD
 
 You either need to run the `docker` command as root, or need to be in the docker group.
