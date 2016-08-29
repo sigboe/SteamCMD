@@ -26,4 +26,4 @@ USER steam
 WORKDIR /opt/steamcmd
 
 # Execution vector
-CMD ["/opt/steamcmd/steamcmd.sh"]
+ENTRYPOINT ["/opt/steamcmd/steamcmd.sh"]
