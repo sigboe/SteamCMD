@@ -12,7 +12,9 @@ RUN adduser \
 
 # install dependencies
 RUN apt-get update && \
-  apt-get install -y curl lib32gcc1
+    apt-get install -y curl lib32gcc1 && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Downloading SteamCMD and make the Steam directory owned by the steam user
 RUN mkdir -p /opt/steamcmd &&\
