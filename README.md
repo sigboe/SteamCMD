@@ -1,4 +1,5 @@
 # SteamCMD
+[![](https://images.microbadger.com/badges/image/sigboe/steamcmd.svg)](http://microbadger.com/images/sigboe/steamcmd "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/sigboe/steamcmd.svg)](http://microbadger.com/images/sigboe/steamcmd "Get your own version badge on microbadger.com")
 
 This Dockerfile will build an image for SteamCMD containerized. It follows best practice from Valve. Full documentation of how to use the program can be found [here](https://developer.valvesoftware.com/wiki/SteamCMD).
 
