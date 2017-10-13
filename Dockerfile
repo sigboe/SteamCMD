@@ -19,7 +19,7 @@ RUN apt-get update && \
 # Downloading SteamCMD and make the Steam directory owned by the steam user
 RUN mkdir -p /opt/steamcmd &&\
     cd /opt/steamcmd &&\
-    curl -s http://media.steampowered.com/installer/steamcmd_linux.tar.gz | tar -vxz &&\
+    curl -s https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz | tar -vxz &&\
     chown -R steam /opt/steamcmd
 
 
