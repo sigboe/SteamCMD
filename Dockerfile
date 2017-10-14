@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 MAINTAINER Sigurd Boe <sig.boe@gmail.com>
 
 # create user for steam
